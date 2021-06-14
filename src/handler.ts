@@ -1,3 +1,4 @@
+import { accountValidation } from "./validators/accountValidators";
 import {
   createAccount,
   createTransfer,
@@ -34,7 +35,7 @@ const server = http.createServer(async (req, res) => {
         ammount: 100,
         currency: "RON",
       };
-      //validate
+      accountValidation(accountToCreate);
       if (!(await getUser(userId))) {
         res.writeHead(404);
         res.end("User not found!");
